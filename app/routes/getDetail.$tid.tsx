@@ -1,18 +1,24 @@
 import { useState } from "react";
-import { useParams } from "@remix-run/react";
+import { useParams, useNavigate } from "@remix-run/react";
 import { toDoItem } from "./toDolists";
-import MyMenu from "./templates/mymenu"
-import MyFooter from "./templates/myfooter"
+import MyMenu from "./templates/mymenu";
+import MyFooter from "./templates/myfooter";
 
 function GetDetail () {
     const myParams = useParams();
     const todl_id = myParams.tid;
+    const navigate = useNavigate();
 
     const tdItem = toDoItem.filter((item) =>
         item.id == todl_id
     );
 
     console.log(tdItem);
+
+    const handleNotFound = () => {
+        navigate('/PageNotFound');
+    }
+ 
 
     return (
     <div className="m-0">
@@ -22,8 +28,10 @@ function GetDetail () {
             <div className="flex flex-row justify-center">
             {
                 tdItem.length === 0 ? 
-                <h1 style={{color: 'black'}}>
-                ไม่พบข้อมูลกิจกรรมที่คุณเลือก!</h1> :
+                ( 
+                    <a onClick={handleNotFound}>[ กรุณาคลิกที่นี่ ]</a>
+                ) 
+                 :
                 ( 
                     <>
                         <p style={{color: 'black'}}>
