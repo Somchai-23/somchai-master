@@ -136,8 +136,8 @@ const resources = [
     ),
   },
   {
-    href: "/MyCardFrom",
-    text: "MyCardFrom",
+    href: "/getToDoLists",
+    text: "getToDoLists",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
