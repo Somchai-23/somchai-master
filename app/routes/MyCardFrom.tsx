@@ -5,7 +5,7 @@ export default function MyCardForm() {
     const [myStatus, setMyStatus] = useState(true);
     const [myMajor, setMyMajor] = useState('');
 
-    function handleSubmit(e) {
+    function handleSubmit(e: { preventDefault: () => void; target: any; }) {
         e.preventDefault();
 
         const form = e.target;
@@ -86,7 +86,7 @@ export default function MyCardForm() {
                     <p>ชื่อ-สกุล: {myName || "กรุณากรอกชื่อ-สกุล"}</p>
                     <p>
                         สถานะนามบัตร:{" "}
-                        {myStatus ? "[/]เปิดใช้งาน":"[X]ยังไม่เปิดใช้งาน!"}
+                        {myStatus ? "[/]เปิดใช้งาน":"[X]ยังไม่เปิดใช้งาน!"} 
                     </p>
                     <p>
                         สาขาวิชา: {myMajor || "กรุณาเลือกสาขาวิชา"}
